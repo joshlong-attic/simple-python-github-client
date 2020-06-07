@@ -8,6 +8,6 @@ setup(
     author='Josh Long',
     author_email='josh@joshlong.com',
     license='MIT',
-    packages=['.'],
+    packages=[''],
     zip_safe=False
 )
