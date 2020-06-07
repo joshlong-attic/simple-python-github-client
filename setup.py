@@ -8,6 +8,7 @@ setup(
     author='Josh Long',
     author_email='josh@joshlong.com',
     license='MIT',
+    setup_requires=['wheel'],
     # packages=[''],
     zip_safe=False
 )
