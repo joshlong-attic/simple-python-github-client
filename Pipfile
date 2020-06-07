@@ -1,7 +1,3 @@
-#
-# following these steps to publish a package to PyPi
-# https://realpython.com/pypi-publish-python-package
-#
 
 [[source]]
 url = "https://${ARTIFACTORY_USERNAME}:${ARTIFACTORY_PASSWORD}@cloudnativejava.jfrog.io/artifactory/api/pypi/pypi-virtual/simple"

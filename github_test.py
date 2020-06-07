@@ -1,6 +1,9 @@
 import unittest
 
-from main import *
+from github import *
+import os
+
+# https://realpython.com/python-testing/
 
 github = SimpleGithubClient(os.environ['GITHUB_TOKEN'].strip())
 users = github.users()
@@ -8,12 +11,13 @@ actions = github.actions()
 
 
 class ActionsTest(unittest.TestCase):
+
     def test_list_workflow_runs(self):
         owner = 'joshlong'
         project = 'jwt-spring-boot-starter'
         failures = actions.list_workflow_runs(owner, project, 'build.yml', status='failure')['total_count']
         all = actions.list_workflow_runs(owner, project, 'build.yml')['total_count']
-        self.assertTrue(all > failures) # I hope!
+        self.assertTrue(all > failures)  # I hope!
 
 
 class UsersTest(unittest.TestCase):
