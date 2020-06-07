@@ -24,4 +24,6 @@ jobs:
 
     - name: Build and publish
       run: |
+        cd $GITHUB_WORKSPACE
+        pwd
         ./publish.sh
