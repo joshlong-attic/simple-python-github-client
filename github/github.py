@@ -52,30 +52,19 @@ class ReposClient(object):
         self.parent = parent
 
     def create_repository_dispatch_event(self, owner: str, repo: str, event_type: str,
-                                         client_payload: str = '{"test":"true"}'):
-        '''
-        https://goobar.io/2019/12/07/manually-trigger-a-github-actions-workflow/
-        :param owner:
-        :param repo:
-        :param event_type:
-        :param client_payload:
-        :return:
-        '''
-        data = {'event_type': event_type, 'client_payload': client_payload}
-        # json_data = json.dumps(data)
+                                         client_payload: typing.Dict = {}):
+
+        client_payload_json = json.dumps(client_payload)
+        data = {'event_type': event_type, 'client_payload': client_payload_json}
         json_data = '''
             {
                 "event_type": "%s",
-                "client_payload": {
-                    "unit": false,
-                    "integration": true
-                }
+                "client_payload": %s
             }
-        ''' % event_type
+        ''' % (event_type, client_payload_json)
         response = requests.post(f'{SimpleGithubClient.GH_ROOT}/repos/{owner}/{repo}/dispatches',
                                  params=data,
                                  data=json_data,
-                                 # json=json_data,
                                  headers=self.parent.build_headers(
                                      {'Accept': 'application/vnd.github.everest-preview+json'}))
         return response.content

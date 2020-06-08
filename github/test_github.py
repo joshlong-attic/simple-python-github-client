@@ -25,7 +25,7 @@ class ReposTest(unittest.TestCase):
 
     def test_create_repository_dispatch_event(self):
         owner = 'joshlong'
-        project = 'jwt-spring-boot-starter'
+        project = '  simple-python-github-client-test '.strip()
         print(repos.create_repository_dispatch_event(owner, project, 'update-event'))
 
 
