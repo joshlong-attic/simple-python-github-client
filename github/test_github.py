@@ -5,8 +5,9 @@ import os
 
 # https://realpython.com/python-testing/
 
-github = SimpleGithubClient(os.environ['GITHUB_TOKEN'].strip())
+github = SimpleGithubClient(os.environ['GITHUB_PERSONAL_ACCESS_TOKEN'].strip())
 users = github.users()
+repos = github.repos()
 actions = github.actions()
 
 
@@ -18,6 +19,14 @@ class ActionsTest(unittest.TestCase):
         failures = actions.list_workflow_runs(owner, project, 'build.yml', status='failure')['total_count']
         all = actions.list_workflow_runs(owner, project, 'build.yml')['total_count']
         self.assertTrue(all > failures)  # I hope!
+
+
+class ReposTest(unittest.TestCase):
+
+    def test_create_repository_dispatch_event(self):
+        owner = 'joshlong'
+        project = 'jwt-spring-boot-starter'
+        print(repos.create_repository_dispatch_event(owner, project, 'update-event'))
 
 
 class UsersTest(unittest.TestCase):
