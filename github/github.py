@@ -28,12 +28,16 @@ class ActionsClient(object):
         params = {}
         if actor is not None:
             params['actor'] = actor
+
         if branch is not None:
             params['branch'] = branch
+
         if event is not None:
             params['event'] = event
+
         if status is not None:
             params['status'] = status
+
         reply = requests.get(
             f'{SimpleGithubClient.GH_ROOT}/repos/{owner}/{repo}/actions/workflows/{workflow_file_name_or_id}/runs',
             params=params,
@@ -64,6 +68,7 @@ class SimpleGithubClient(object):
     def __init__(self, personal_access_token: str):
         self.personal_access_token = personal_access_token
         self.default_headers = {'Authorization': f'token {self.personal_access_token}'}
+
 
     def build_headers(self, custom_headers: typing.Dict = {}) -> typing.Dict:
         n_dict = {}
