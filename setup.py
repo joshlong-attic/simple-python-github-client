@@ -10,6 +10,7 @@ setup(
     author_email='josh@joshlong.com',
     license='MIT',
     setup_requires=['wheel'],
+    install_requires=['requests'],
     packages=['github'],
     ## TODO
     ## figure out why the deployed artifact has no Python code!
