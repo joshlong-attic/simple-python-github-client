@@ -67,7 +67,7 @@ class ReposClient(object):
                                  data=json_data,
                                  headers=self.parent.build_headers(
                                      {'Accept': 'application/vnd.github.everest-preview+json'}))
-        return response.content
+        return response
 
 
 class UsersClient(object):

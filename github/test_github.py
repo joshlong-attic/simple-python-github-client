@@ -20,13 +20,13 @@ class ActionsTest(unittest.TestCase):
         all = actions.list_workflow_runs(owner, project, 'build.yml')['total_count']
         self.assertTrue(all > failures)  # I hope!
 
-
 class ReposTest(unittest.TestCase):
 
     def test_create_repository_dispatch_event(self):
         owner = 'joshlong'
         project = '  simple-python-github-client-test '.strip()
-        print(repos.create_repository_dispatch_event(owner, project, 'update-event'))
+        dispatch_event = repos.create_repository_dispatch_event(owner, project, 'update-event')
+        print(dispatch_event.content)
 
 
 class UsersTest(unittest.TestCase):
