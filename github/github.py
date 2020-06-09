@@ -84,7 +84,7 @@ class UsersClient(object):
 class SimpleGithubClient(object):
     GH_ROOT = ' https://api.github.com  '.strip()
 
-    def repos(self) -> ReposClient:
+    def repositories(self) -> ReposClient:
         return ReposClient(self)
 
     def actions(self) -> ActionsClient:
