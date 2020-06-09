@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='simple-python-github-client',
-    version='0.1',
+    version='0.2',
     description="You probably don't want to use this",
     long_description=open('README.md').read(),
     url='http://github.com/joshlong/simple-python-github-client',
